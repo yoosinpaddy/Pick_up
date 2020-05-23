@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "32264985961",
+    "firebase_url": "https://pickup-3c9b3.firebaseio.com",
+    "project_id": "pickup-3c9b3",
+    "storage_bucket": "pickup-3c9b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32264985961:android:942a5c142e7597bceb71f8",
+        "android_client_info": {
+          "package_name": "com.yoosinpaddy.pickup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32264985961-pud77jqat23namors7m1h3ehiabu2jmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQb4IdZs27TcPfRCmiLjrO_CBbMt7dB8E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32264985961-pud77jqat23namors7m1h3ehiabu2jmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

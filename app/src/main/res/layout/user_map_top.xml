@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="top"
+    android:layout_margin="10dp"
+    android:visibility="visible"
+    android:id="@+id/topPanel"
+    tools:context=".driver.activities.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl11"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true"
+        tools:targetApi="lollipop">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/rounded_rectangle_less"
+            android:backgroundTint="@color/colorWhiteDullest"
+            android:hint="@string/road_1"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/save"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:elevation="2dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            android:layout_marginEnd="77dp"
+            android:layout_marginRight="77dp"
+            android:onClick="finishRoute"
+            android:visibility="gone"
+            android:foregroundTint="@color/colorBlack"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/colorWhiteDullest"
+            android:src="@drawable/ic_done_black_24dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/undo"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:elevation="2dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            android:visibility="gone"
+            android:onClick="undoRoute"
+            android:layout_marginEnd="77dp"
+            android:layout_marginRight="77dp"
+            android:foregroundTint="@color/colorBlack"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/colorWhiteDullest"
+            android:src="@drawable/ic_undo_black_24dp" />
+    </RelativeLayout>
+
+</RelativeLayout>

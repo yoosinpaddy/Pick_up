@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/rounded_rectangle_less"
+    android:elevation="4dp"
+    android:padding="10dp"
+    tools:targetApi="lollipop">
+
+    <TextView
+        android:id="@+id/roadName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="3dp"
+        android:text="@string/road_1"
+        android:textColor="@color/colorBlack"
+        android:textSize="22sp"
+        android:gravity="left"
+        android:layout_centerVertical="true"
+        android:tooltipText="@string/road_1"
+        tools:targetApi="o"
+        tools:ignore="RelativeOverlap,RtlHardcoded" />
+
+    <ImageView
+        android:id="@+id/edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_toStartOf="@+id/delete"
+        android:layout_toLeftOf="@+id/delete"
+        android:contentDescription="Edit"
+        android:src="@drawable/ic_edit_black_24dp"
+        android:tint="@color/colorBlack"
+        tools:ignore="HardcodedText"
+        tools:targetApi="lollipop" />
+
+    <ImageView
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:contentDescription="Delete"
+        android:src="@drawable/ic_delete_forever_black_24dp"
+        android:tint="@color/colorBlack"
+        tools:ignore="HardcodedText"
+        tools:targetApi="lollipop" />
+
+</RelativeLayout>

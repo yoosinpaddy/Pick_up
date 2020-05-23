@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:layout_margin="10dp"
+    android:id="@+id/bottomPanel"
+    tools:context=".driver.activities.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/addRoute"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-40dp"
+        android:background="@drawable/rounded_rectangle"
+        android:backgroundTint="@color/colorWhiteDullest"
+        tools:targetApi="lollipop">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/dum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:elevation="4dp"
+            android:src="@drawable/ic_add_black_24dp"
+            android:visibility="invisible"
+            app:backgroundTint="@color/colorAccent"
+            tools:targetApi="lollipop" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/routes"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            android:onClick="viewRoute"
+            android:layout_marginEnd="77dp"
+            android:layout_marginRight="77dp"
+            android:foregroundTint="@color/colorBlack"
+            android:src="@drawable/ic_menu_black_24dp" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/onOff"
+            android:layout_width="70dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="12dp"
+            android:layout_marginEnd="77dp"
+            android:layout_marginRight="77dp"
+            android:foregroundTint="@color/colorBlack"
+            android:onClick="onlineOfflineRoute"
+            android:src="@drawable/ic_nature_people_black_24dp" />
+    </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addRoute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:elevation="4dp"
+        android:src="@drawable/ic_add_black_24dp"
+        app:backgroundTint="@color/colorAccent"
+        tools:targetApi="lollipop" />
+</RelativeLayout>

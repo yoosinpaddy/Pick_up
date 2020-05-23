@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Pick Up</string>
+    <string name="user">User</string>
+    <string name="driver">driver</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account_register">Don\'t have an account? Register</string>
+    <string name="register">Register</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="already_have_an_account_login">Already have an account? Login</string>
+    <string name="email">email</string>
+    <string name="hint_email">example@gmail.com</string>
+    <string name="password">password</string>
+    <string name="password_hint">******</string>
+    <string name="icon">Icon</string>
+    <string name="background">background</string>
+    <string name="username_hint">Yoosin Paddy</string>
+    <string name="full_name">Full name</string>
+    <string name="app_icon">app icon</string>
+    <string name="google_map_api">AIzaSyCe64Yk7ebgep6viU0qAjsicROgvQLyLbM</string>
+    <string name="road_name">Road Name</string>
+    <string name="road_1">Road 1</string>
+    <string name="select_the_path">Select the path</string>
+
+    <!--fiebase_alisachristianwriter-->
+</resources>

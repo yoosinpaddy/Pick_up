@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhiteDull"
+    tools:context=".UserTypeChooserActivity">
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/colorWhite"
+        android:layout_centerVertical="true"
+        android:elevation="4dp"
+        android:layout_margin="20dp"
+        tools:targetApi="lollipop" />
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_below="@+id/divider"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="true"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:padding="12dp"
+        android:gravity="center"
+        android:background="@drawable/circle_btn_chooser"
+        android:text="@string/user"/>
+    <TextView
+        android:id="@+id/driver"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_above="@+id/divider"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="true"
+        android:textSize="33sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:padding="12dp"
+        android:gravity="center"
+        android:background="@drawable/circle_btn_chooser_driver"
+        android:text="@string/driver"/>
+
+</RelativeLayout>
