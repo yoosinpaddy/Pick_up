@@ -1,6 +1,8 @@
 package com.yoosinpaddy.pickup.driver.activities;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -63,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     List<LatLng> singleAddPath = new ArrayList<>();
     AlertDialog.Builder builder;
     Boolean isBuilding = false;
-    Boolean isOnline = true;
     Boolean isShowing = false;
     Boolean isLocationEnabled = false;
     View topPanel, bottomPanel;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     ProgressDialog mDialog;
     private static final String TAG = "MainActivity";
     Road r;
-
+    public static final String CHANNEL_ID = "driverServiceChannel";
     MyLocation myLocation = new MyLocation();
 
 
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_driver_main);
         checkPermission();
+        createNotificationChannel();
         mDialog = new ProgressDialog(this);
         mdatabase = FirebaseDatabase.getInstance().getReference().child(roads_base);
         mdatabase2 = FirebaseDatabase.getInstance().getReference().child(user_base);
@@ -102,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+        startService();
     }
 
     public void addRoute(View v) {
@@ -121,19 +124,25 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
     public void onlineOfflineRoute(View v1) {
-        if (isOnline) {
+        if (isOnline()) {
             Toast.makeText(this, "You are now offline", Toast.LENGTH_SHORT).show();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ((ImageView)v1).setImageDrawable(getDrawable(R.drawable.ic_nature_people_dull_24dp));
-                isOnline=false;
+                isOnline(false);
             }
         } else {
             Toast.makeText(this, "You are now online", Toast.LENGTH_SHORT).show();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 ((ImageView)v1).setImageDrawable(getDrawable(R.drawable.ic_nature_people_black_24dp));
-                isOnline=true;
+                isOnline(true);
             }
         }
+    }
+    public boolean isOnline(){
+        return SharedPref.isOnline(MainActivity.this);
+    }
+    public void isOnline(Boolean isonline){
+        SharedPref.saveSharedPreference("status",isonline,MainActivity.this);
     }
     public void viewRoute(View v) {
         startActivity(new Intent(MainActivity.this, MyRoutes.class));
@@ -302,14 +311,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         });
     }
     public void uploadLocation(Location location){
-        FirebaseUser driverUid= FirebaseAuth.getInstance().getCurrentUser();
+//        now done on a service
+        /*FirebaseUser driverUid= FirebaseAuth.getInstance().getCurrentUser();
         if (driverUid!=null){
             String dr=driverUid.getUid();
             com.yoosinpaddy.pickup.common.models.LatLng latLng=new com.yoosinpaddy.pickup.common.models.LatLng(location.getLatitude(),location.getLongitude());
             DatabaseReference mdata3=FirebaseDatabase.getInstance().getReference().child(user_base);
             mdata3=mdata3.child(dr).child("location");
             mdata3.setValue(latLng).addOnSuccessListener(aVoid -> Log.e(TAG, "onLocationSuccess: " )).addOnFailureListener(e -> Log.e(TAG, "onLocationFailure: " ));
-        }
+        }*/
 
     }
 
@@ -336,7 +346,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 }
                 new Handler().postDelayed(this,5000);
             }
-        },1000);
+        },200);
     }
 
     @Override
@@ -413,7 +423,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         @Override
         public void gotLocation(Location location){
             Log.e(TAG, "gotLocation: "+location.getLatitude() );
-            if (isOnline){
+            if (isOnline()){
                 uploadLocation(location);
                 if (myMap!=null){
                     if (!isBuilding){
@@ -432,5 +442,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             MainActivity.this.finish();
 
         }).setNegativeButton("No", (dialog, which) -> dialog.dismiss()).show();
+    }
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "Driver Service Channel",
+                    NotificationManager.IMPORTANCE_DEFAULT
+            );
+            serviceChannel.setSound(null,null);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            if (manager != null) {
+                manager.createNotificationChannel(serviceChannel);
+            }
+        }
+    }
+    public void startService() {
+        Intent serviceIntent = new Intent(this, DriverService.class);
+        serviceIntent.putExtra("inputExtra", "Updating users");
+        ContextCompat.startForegroundService(this, serviceIntent);
+    }
+    public void stopService() {
+        Intent serviceIntent = new Intent(this, DriverService.class);
+        stopService(serviceIntent);
     }
 }

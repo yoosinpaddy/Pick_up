@@ -15,10 +15,15 @@ public class SharedPref {
         editor.putString(key, value);
         editor.apply();
     }
-    public static void saveSharedPreference(String key, int value, Context context){
+    @SuppressLint("ApplySharedPref")
+    public static void saveSharedPreference(String key, Boolean value, Context context){
         SharedPreferences.Editor editor = context.getSharedPreferences(shared_auth, MODE_PRIVATE).edit();
-        editor.putInt(key, value);
-        editor.apply();
+        editor.putBoolean(key, value);
+        editor.commit();
+    }
+    public static boolean isOnline(Context context){
+        SharedPreferences sharedPreferences=context.getSharedPreferences(shared_auth,MODE_PRIVATE);
+        return sharedPreferences.getBoolean("status",true);
     }
     public static void deleteAllSharedPreference(Context context){
         SharedPreferences.Editor editor = context.getSharedPreferences(shared_auth, MODE_PRIVATE).edit();
